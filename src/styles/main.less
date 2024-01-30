@@ -1,0 +1,107 @@
+@import "variables.less";
+@import "mixins.less";
+@import "breakpoints.less";
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: @font-family;
+}
+
+body {
+  background-color: @background-color;
+}
+
+li {
+  list-style: none;
+}
+
+.container {
+  max-width: 1024px;
+  width: 100%;
+  .margin(0, auto, 0, auto);
+}
+
+header {
+  background-color: @header-color;
+  position: sticky;
+  top: 0;
+  left: 0;
+}
+
+header .container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  .padding(16px, 0, 16px, 0);
+}
+
+.menu {
+  display: flex;
+}
+
+.menu li {
+  font-weight: @menu-font-weight;
+  .margin(0, 0, 0, @menu-margin-left);
+}
+
+.menu li a {
+  color: @menu-link-color;
+  text-decoration: none;
+}
+
+section {
+  .padding(@section-padding, @section-padding, @section-padding, @section-padding);
+}
+
+.products {
+  margin-top: 40px;
+  display: grid;
+  grid-template-columns: @product-grid-template-columns;
+  column-gap: @product-grid-gap;
+  row-gap: @product-row-gap;
+  width: 100%;
+}
+
+.product-item img {
+  width: 100%;
+  .border-radius(@product-img-border-radius);
+}
+
+.product-button {
+  display: block;
+  background-color: @product-button-background-color;
+  color: @product-button-color;
+  text-align: center;
+  .padding(@product-button-padding, 0, @product-button-padding, 0);
+  .border-radius(@product-button-border-radius);
+  .margin(@product-button-margin-top, 0, 0, 0);
+  text-decoration: none;
+}
+
+.product-button:hover {
+  background-color: @product-button-hover-background-color;
+}
+
+// Use maps for media queries
+@media screen and (max-width: @breakpoints[tablet]) {
+  .container {
+    max-width: @container-max-width;
+  }
+
+  .products {
+    grid-template-columns: @product-grid-template-columns-responsive;
+    column-gap: @product-grid-gap-responsive;
+  }
+}
+
+@media screen and (max-width: @breakpoints[mobile]) {
+  .products {
+    display: block;
+  }
+
+  .product-item {
+    .margin(0, 0, @product-item-margin-bottom, 0);
+  }
+}
